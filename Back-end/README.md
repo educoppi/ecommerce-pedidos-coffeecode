@@ -37,31 +37,19 @@ _(Este projeto consiste no desenvolvimento de um sistema completo de gestão de 
 
 ```
 ecommerce-pedidos-NOMEDASQUAD/
-ecommerce/
-├── Back-end/
-│   ├── src/
-│   │   ├── main/
-│   │   │   └── java/
-│   │   │       └── com/
-│   │   │           └── senai/
-│   │   │               └── ecommerce/
-│   │   │                   ├── modelo/
-│   │   │                   ├── servico/
-│   │   │                   ├── repositorio/
-│   │   │                   └── util/
-│   │   └── test/
-│   │       └── java/
-│   │           └── com/
-│   │               └── senai/
-│   │                   └── ecommerce/
-│   │
-│   ├── pom.xml
-│   └── README.md
-│
-├── Front-end/
-│
+├── src/
+│   ├── main/
+│   │   └── java/
+│   │       └── com/senai/ecommerce/
+│   │           ├── modelo/
+│   │           ├── servico/
+│   │           ├── repositorio/
+│   │           └── util/
+│   └── test/
+│       └── java/
+│           └── com/senai/ecommerce/
+├── pom.xml
 ├── README.md
-│
 └── .gitignore
 ```
 

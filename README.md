@@ -15,6 +15,14 @@
 
 _(Este projeto consiste no desenvolvimento de um sistema completo de gestão de pedidos para um e-commerce, permitindo o cadastro e o gerenciamento de produtos, clientes, pedidos e pagamentos de forma organizada e eficiente.)_
 
+## Divisão do Trabalho
+
+| Nome | Trabalho Responsável |
+|---|---|
+| _(Eduardo Bruno Coppi)_ | Cliente |
+| _(Beatriz Cardoso Rocha)_ | Pedido, Pagamento |
+| _(João Paulo Oliveira)_ | Produto |
+
 ## Funcionalidades previstas
 
 - [ ] Cadastro e gerenciamento de produtos

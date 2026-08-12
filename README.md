@@ -5,11 +5,11 @@
 
 ## Equipe / Squad
 
-| Nome | Papel na Aula 01 |
+| Nome | Quando foi responsável do dia |
 |---|---|
-| _(Eduardo Bruno Coppi)_ | Responsável do dia |
+| _(Eduardo Bruno Coppi)_ | Aulas: 01 |
 | _(Beatriz Cardoso Rocha)_ | |
-| _(João Paulo Oliveira)_ | |
+| _(João Paulo Oliveira)_ | Aulas: 02 |
 
 ## Descrição do desafio
 

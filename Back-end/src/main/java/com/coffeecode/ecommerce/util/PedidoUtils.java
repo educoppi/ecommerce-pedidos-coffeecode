@@ -4,3 +4,7 @@ private static final double TAXA_DESCONTO = 0.10;
 private static final double DESCONTO_MAXIMO = 50.00;
 private static final double VALOR_FRETE_GRATIS = 300.00;
 
+private static double calcularDesconto(double valorDoPedido) {
+    double desconto = valorDoPedido * TAXA_DESCONTO;
+    return Math.min(desconto, DESCONTO_MAXIMO);
+}

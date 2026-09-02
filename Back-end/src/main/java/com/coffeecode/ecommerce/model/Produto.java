@@ -13,22 +13,18 @@ public class Produto {
         this.ativo = true;
     }
 
-    public Produto(String codigo, String nome, String descricao, double preco, int quantidadeEmEstoque) {
-        this.codigo = codigo;
-        this.nome = nome;
-        this.descricao = descricao;
-        this.preco = preco;
-        this.quantidadeEmEstoque = quantidadeEmEstoque;
-        this.ativo = true; // todo produto nasce ativo
+    public Produto(String codigo, String nome, double preco, int estoque) {
+        setCodigo(codigo);
+        setNome(nome);
+        setPreco(preco);
+        setQuantidadeEmEstoque(estoque);
+        this.ativo = true;
     }
 
     public String getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
-    }
 
     public String getNome() {
         return nome;
@@ -67,7 +63,7 @@ public class Produto {
 
     public void setQuantidadeEmEstoque(int quantidade) {
         if (quantidade < 0) {
-            throw new IllegalArgumentException("Estoque não pode ser negativo: " +quantidade);
+            throw new IllegalArgumentException("Estoque não pode ser negativo: " + quantidade);
         }
 
         this.quantidadeEmEstoque = quantidade;
@@ -82,6 +78,13 @@ public class Produto {
     }
 
     public void baixarEstoque(int quantidade) {
+        if (quantidade <= 0) {
+            throw new IllegalArgumentException("Quantidade deve ser positiva");
+        }
+        if (quantidade > quantidadeEmEstoque) {
+            throw new IllegalArgumentException(
+                    "Estoque insuficiente. Disponível: " + quantidadeEmEstoque);
+        }
         this.quantidadeEmEstoque = this.quantidadeEmEstoque - quantidade;
     }
 

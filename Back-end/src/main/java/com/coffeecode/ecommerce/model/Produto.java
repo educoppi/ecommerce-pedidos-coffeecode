@@ -9,11 +9,11 @@ public class Produto {
     private int quantidadeEmEstoque;
     private boolean ativo;
 
-    public Produto(){
+    public Produto() {
         this.ativo = true;
     }
 
-    public Produto (String codigo, String nome, String descricao, double preco, int quantidadeEmEstoque){
+    public Produto(String codigo, String nome, String descricao, double preco, int quantidadeEmEstoque) {
         this.codigo = codigo;
         this.nome = nome;
         this.descricao = descricao;
@@ -30,18 +30,17 @@ public class Produto {
         this.codigo = codigo;
     }
 
-    public String getNome(){
+    public String getNome() {
         return nome;
     }
 
-    public void setNome(String nome){
+    public void setNome(String nome) {
         this.nome = nome;
     }
 
-    public boolean isAtivo(){
-        return ativo; 
+    public boolean isAtivo() {
+        return ativo;
     }
-
 
     public String getDescricao() {
         return descricao;
@@ -56,6 +55,9 @@ public class Produto {
     }
 
     public void setPreco(double preco) {
+        if (preco < 0) {
+            throw new IllegalArgumentException("Preço não pode ser negativo: " + preco);
+        }
         this.preco = preco;
     }
 
@@ -63,19 +65,23 @@ public class Produto {
         return quantidadeEmEstoque;
     }
 
-    public void setQuantidadeEmEstoque(int quantidadeEmEstoque) {
-        this.quantidadeEmEstoque = quantidadeEmEstoque;
+    public void setQuantidadeEmEstoque(int quantidade) {
+        if (quantidade < 0) {
+            throw new IllegalArgumentException("Estoque não pode ser negativo: " +quantidade);
+        }
+
+        this.quantidadeEmEstoque = quantidade;
     }
 
     public void setAtivo(boolean ativo) {
         this.ativo = ativo;
     }
 
-    public boolean temEstoqueDisponivel(int quantidadeDesejada){
+    public boolean temEstoqueDisponivel(int quantidadeDesejada) {
         return ativo && this.quantidadeEmEstoque >= quantidadeDesejada;
     }
 
-    public void baixarEstoque(int quantidade){
+    public void baixarEstoque(int quantidade) {
         this.quantidadeEmEstoque = this.quantidadeEmEstoque - quantidade;
     }
 

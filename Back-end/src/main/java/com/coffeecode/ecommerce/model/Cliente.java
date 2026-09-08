@@ -1,33 +1,17 @@
 package com.coffeecode.ecommerce.model;
 
-public class Cliente {
-    private String nome;
-    private String cpf;
+import com.coffeecode.ecommerce.model.Pessoa;
+
+public class Cliente extends Pessoa {
     private String email;
     private String telefone;
     private Endereco endereco;
 
-    public Cliente(String nome, String cpf, String email, Endereco endereco){
-        this.nome = nome;
-        this.cpf = cpf;
-        this.email = email;
-        this.endereco = endereco;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getCpf() {
-        return cpf;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
+    public Cliente(String nome, String cpf, String email, Endereco endereco, String telefone) {
+        super(nome, cpf);
+        setEmail(email);
+        setTelefone(telefone);
+        setEndereco(endereco);
     }
 
     public String getEmail() {
@@ -55,8 +39,7 @@ public class Cliente {
     }
 
     @Override
-    public String toString() {
-        return "Cliente [nome=" + nome + ", cpf=" + cpf + ", email=" + email + ", telefone=" + telefone + ", endereco="
-                + endereco.toString() + "]";
+    public String getIdentificacao() {
+        return getNome() + " (CPF " + getDocumento() + ")";
     }
 }

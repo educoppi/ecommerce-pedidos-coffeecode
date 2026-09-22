@@ -3,10 +3,15 @@ package com.coffeecode.ecommerce.model;
 public class Pix extends FormaPagamento implements ProcessadorPagamento {
     private final String chave;
 
+    public Pix(String chave) {
+        super(valor, dataDeVencimento);
+        this.chave = chave;
+    }
+
     @Override
     public boolean processar(BigDecimal valor) {
         System.out.println("Enviando cobrança Pix para a chave " + chave);
-        return true; // aprovação imediata
+        return true;
     }
 
     @Override

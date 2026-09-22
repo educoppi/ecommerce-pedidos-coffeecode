@@ -1,20 +1,21 @@
-import java.math.BigDecimal;
+package com.coffeecode.ecommerce.model;
 
-import com.coffeecode.ecommerce.model.FormaPagamento;
+public class Pix extends FormaPagamento implements ProcessadorPagamento {
+    private final String chave;
 
-public class Pix extends FormaPagamento {
-    private String chave;
-
-    public Pix (BigDecimal valor, Date dataDeVencimento, String chave) {
-        super(valor, dataDeVencimento);
-        setChave(chave);
+    @Override
+    public boolean processar(BigDecimal valor) {
+        System.out.println("Enviando cobrança Pix para a chave " + chave);
+        return true; // aprovação imediata
     }
 
-    public String getChave() {
-        return chave;
+    @Override
+    public String getComprovante() {
+        return "PIX-" + System.currentTimeMillis();
     }
 
-    public void setChave(String chave) {
-        this.chave = chave;
+    @Override
+    public String getDescricao() {
+        return "Pix - chave " + chave;
     }
 }

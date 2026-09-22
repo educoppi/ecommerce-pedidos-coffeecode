@@ -1,4 +1,4 @@
-import java.math.BigDecimal; 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -21,22 +21,31 @@ public class Pedido {
 
     public void adicionarItem(Produto produto, int quantidade) {
         Objects.requireNonNull(produto, "Produto é obrigatório");
-        
+
         if (quantidade <= 0) {
             throw new IllegalArgumentException("A quantidade deve ser maior que zero");
         }
         if (!produto.temEstoqueDisponivel(quantidade)) {
             throw new IllegalStateException("Estoque insuficiente: " + produto.getNome());
         }
-        
+
         itens.add(new ItemPedido(produto, quantidade, produto.getPreco()));
     }
 
-    public void pagarCom(FormaPagamento formaPagamento) {
+    public boolean pagar(ProcessadorPagamento processador) {
+        if (processador == null) {
+            throw new IllegalArgumentException("Forma de pagamento é obrigatória");
+        }
         if (itens.isEmpty()) {
             throw new IllegalStateException("Pedido sem itens não pode ser pago");
+
         }
-        this.formaPagamento = Objects.requireNonNull(formaPagamento, "Forma de pagamento é obrigatória");
+        boolean aprovado = processador.processar(calcularValorTotal());
+        if (aprovado) {
+            this.situacao = SituacaoDoPedido.PAGO;
+            this.comprovante = processador.getComprovante();
+        }
+        return aprovado;
     }
 
     public BigDecimal calcularValorTotal() {

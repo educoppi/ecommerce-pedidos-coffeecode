@@ -23,4 +23,9 @@ public class Pix extends FormaPagamento implements ProcessadorPagamento {
     public String getDescricao() {
         return "Pix - chave " + chave;
     }
+
+    public String gerarCodigoCopiaECola() {
+        String identificadorUnico = String.valueOf(System.currentTimeMillis());
+        return "00020126580014br.gov.bcb.pix0136" + chave + "5204000053039865802BR5910ECommerce6008SaoPaulo62070503" + identificadorUnico;
+    }
 }

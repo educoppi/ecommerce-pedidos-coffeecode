@@ -23,4 +23,14 @@ public class Pix extends FormaPagamento implements ProcessadorPagamento {
     public String getDescricao() {
         return "Pix - chave " + chave;
     }
+
+    public BigDecimal calcularValorParcela(int quantidadeParcelas) {
+        if (quantidadeParcelas <= 0) {
+            throw new IllegalArgumentException("A quantidade de parcelas deve ser maior que zero.");
+        }
+
+        BigDecimal valorTotal = getValor(); 
+
+        return valorTotal.divide(new BigDecimal(quantidadeParcelas), 2, RoundingMode.HALF_UP);
+    }
 }

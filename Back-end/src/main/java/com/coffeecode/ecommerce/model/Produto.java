@@ -25,7 +25,6 @@ public class Produto {
         return codigo;
     }
 
-
     public String getNome() {
         return nome;
     }
@@ -77,15 +76,14 @@ public class Produto {
         return ativo && this.quantidadeEmEstoque >= quantidadeDesejada;
     }
 
-    public void baixarEstoque(int quantidade) {
+    public void baixarEstoque(int quantidade) throws EstoqueInsuficienteException {
         if (quantidade <= 0) {
-            throw new IllegalArgumentException("Quantidade deve ser positiva");
+            throw new IllegalArgumentException("Quantidade deve ser positiva.");
         }
-        if (quantidade > quantidadeEmEstoque) {
-            throw new IllegalArgumentException(
-                    "Estoque insuficiente. Disponível: " + quantidadeEmEstoque);
+        if (quantidade > this.quantidadeEmEstoque) {
+            throw new EstoqueInsuficienteException(this, quantidade);
         }
-        this.quantidadeEmEstoque = this.quantidadeEmEstoque - quantidade;
+        this.quantidadeEmEstoque -= quantidade;
     }
 
     @Override

@@ -1,4 +1,5 @@
 package com.coffeecode.ecommerce;
+
 import com.coffeecode.ecommerce.model.Produto;
 
 /**
@@ -16,6 +17,17 @@ public class App {
 
         System.out.println(monitor.toString());
         System.out.println(teclado.toString());
+
+        try {
+            pedido.adicionarItem(notebook, 50);
+            System.out.println("Item adicionado ao pedido.");
+        } catch (EstoqueInsuficienteException e) {
+            System.out.println("Não foi possível adicionar: " + e.getMessage());
+            System.out.println("Disponível agora: "
+                    + e.getProduto().getQuantidadeEmEstoque());
+        } catch (IllegalArgumentException e) {
+            System.out.println("Dado inválido: " + e.getMessage());
+        }
 
     }
 }

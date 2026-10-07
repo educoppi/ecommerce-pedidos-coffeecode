@@ -1,11 +1,14 @@
 package com.coffeecode.ecommerce.model;
 
 import java.math.BigDecimal;
+import java.util.Date;
 
-public class Dinheiro implements ProcessadorPagamento {
+import com.coffeecode.ecommerce.model.pagamento.ProcessadorPagamento;
+
+public class Dinheiro extends FormaPagamento implements ProcessadorPagamento {
     private final BigDecimal valorRecebido;
 
-    public Dinheiro (BigDecimal valorRecebido) {
+    public Dinheiro (BigDecimal valor, Date dataDeVencimento, BigDecimal valorRecebido) {
         super(valor, dataDeVencimento);
         this.valorRecebido = valorRecebido;
     }

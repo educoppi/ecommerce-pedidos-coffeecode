@@ -1,16 +1,19 @@
 package com.coffeecode.ecommerce.model;
 
+import java.math.BigDecimal;
+
 public class ItemPedido {
     private Produto produto;
     private int quantidade;
-    private double precoPraticado;
+    private BigDecimal precoPraticado;
 
     // Construtor que utiliza os métodos set para inicializar os atributos
-    public ItemPedido(Produto produto, int quantidade, double precoPraticado) {
+    public ItemPedido(Produto produto, int quantidade, BigDecimal precoPraticado) {
         setProduto(produto);
         setQuantidade(quantidade);
         setPrecoPraticado(precoPraticado);
     }
+
 
     public Produto getProduto() {
         return produto;
@@ -34,18 +37,20 @@ public class ItemPedido {
         this.quantidade = quantidade;
     }
 
-    public double getPrecoPraticado() {
+    public BigDecimal getPrecoPraticado() {
         return precoPraticado;
     }
 
-    public void setPrecoPraticado(double precoPraticado) {
-        if (precoPraticado < 0) {
+
+
+    public void setPrecoPraticado(BigDecimal precoPraticado) {
+        if (precoPraticado.compareTo(BigDecimal.ZERO) < 0) {
             throw new IllegalArgumentException("O preço praticado não pode ser negativo.");
         }
         this.precoPraticado = precoPraticado;
     }
 
-    public double calcularSubtotal() {
-        return this.precoPraticado * this.quantidade; 
+    public BigDecimal calcularSubtotal() {
+        return this.precoPraticado.multiply(BigDecimal.valueOf(this.quantidade));
     }
 }

@@ -1,7 +1,5 @@
 package com.coffeecode.ecommerce.model;
 
-import com.coffeecode.ecommerce.model.Pessoa;
-
 public class Cliente extends Pessoa {
     private String email;
     private String telefone;
@@ -12,6 +10,11 @@ public class Cliente extends Pessoa {
         setEmail(email);
         setTelefone(telefone);
         setEndereco(endereco);
+    }
+
+    public Cliente(String nome, String email) {
+        super(nome);
+        setEmail(email);
     }
 
     public String getEmail() {
@@ -38,8 +41,8 @@ public class Cliente extends Pessoa {
         this.endereco = endereco;
     }
 
-    @Override
+
     public String getIdentificacao() {
-        return getNome() + " (CPF " + getDocumento() + ")";
+        return super.getNome() + " (CPF " + super.getDocumento() + ")";
     }
 }

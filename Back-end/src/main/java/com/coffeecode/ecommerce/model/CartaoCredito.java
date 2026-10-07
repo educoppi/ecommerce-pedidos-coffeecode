@@ -1,6 +1,12 @@
-import com.coffeecode.ecommerce.model.FormaPagamento;
+package com.coffeecode.ecommerce.model;
 
-public class CartaoCredito {
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.util.*;
+
+import com.coffeecode.ecommerce.model.pagamento.ProcessadorPagamento;
+
+public class CartaoCredito extends FormaPagamento implements ProcessadorPagamento {
     private String numeroDoCartao;
 
     public CartaoCredito(BigDecimal valor, Date dataDeVencimento, String numeroDoCartao) {
@@ -16,23 +22,16 @@ public class CartaoCredito {
         this.numeroDoCartao = numeroDoCartao;
     }
 
-    @Override
-    public boolean processar(BigDecimal valor) {
-        // Aqui vai a lógica de comunicação com a operadora de cartão
-        System.out.println("Processando " + valor + " no cartão: " + numeroDoCartao);
-        return true;
-    }
-
+ 
     @Override
     public String getComprovante() {
-        // Exemplo: pegando os últimos 4 dígitos do cartão para o comprovante
         String ultimosDigitos = numeroDoCartao.length() > 4
                 ? numeroDoCartao.substring(numeroDoCartao.length() - 4)
                 : numeroDoCartao;
 
         return "Comprovante gerado com sucesso. Cartão final: " + ultimosDigitos;
     }
-
+ 
     @Override
     public String getDescricao() {
         return "Pagamento efetuado via Cartão de Crédito";
@@ -47,4 +46,11 @@ public class CartaoCredito {
 
         return valorTotal.divide(new BigDecimal(quantidadeParcelas), 2, RoundingMode.HALF_UP);
     }
+
+
+    @Override
+    public boolean processar(BigDecimal valor) {
+        throw new UnsupportedOperationException("Unimplemented method 'processar'");
+    }
+
 }

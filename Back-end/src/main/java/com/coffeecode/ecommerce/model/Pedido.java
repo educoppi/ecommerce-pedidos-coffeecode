@@ -1,8 +1,11 @@
+package com.coffeecode.ecommerce.model;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
+
+import com.coffeecode.ecommerce.model.pagamento.ProcessadorPagamento;
 
 public class Pedido {
 
@@ -12,7 +15,7 @@ public class Pedido {
     private FormaPagamento formaPagamento;
 
     public Pedido(String numero, Cliente cliente) {
-        if (numero == null || numero.blank()) {
+        if (numero == null || numero.isBlank()) {
             throw new IllegalArgumentException("Número do pedido é obrigatório");
         }
         this.cliente = Objects.requireNonNull(cliente, "Pedido exige um cliente");
@@ -42,8 +45,7 @@ public class Pedido {
         }
         boolean aprovado = processador.processar(calcularValorTotal());
         if (aprovado) {
-            this.situacao = SituacaoDoPedido.PAGO;
-            this.comprovante = processador.getComprovante();
+            processador.getComprovante();
         }
         return aprovado;
     }

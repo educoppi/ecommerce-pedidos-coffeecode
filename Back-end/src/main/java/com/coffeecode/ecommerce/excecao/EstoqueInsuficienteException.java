@@ -1,4 +1,5 @@
-import com.senai.ecommerce.model.Produto;
+package com.coffeecode.ecommerce.excecao;
+import com.coffeecode.ecommerce.model.*;
 
 public class EstoqueInsuficienteException extends ECommerceException {
     private final Produto produto;

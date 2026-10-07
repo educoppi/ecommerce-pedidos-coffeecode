@@ -1,11 +1,15 @@
 package com.coffeecode.ecommerce.model;
 
+import java.math.BigDecimal;
+
+import com.coffeecode.ecommerce.excecao.EstoqueInsuficienteException;
+
 // Modelo da classe Produto
 public class Produto {
     private String codigo;
     private String nome;
     private String descricao;
-    private double preco;
+    private BigDecimal preco;
     private int quantidadeEmEstoque;
     private boolean ativo;
 
@@ -13,12 +17,16 @@ public class Produto {
         this.ativo = true;
     }
 
-    public Produto(String codigo, String nome, double preco, int estoque) {
+    public Produto(String codigo, String nome, BigDecimal preco, int estoque) {
         setCodigo(codigo);
         setNome(nome);
         setPreco(preco);
         setQuantidadeEmEstoque(estoque);
         this.ativo = true;
+    }
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
     }
 
     public String getCodigo() {
@@ -45,12 +53,12 @@ public class Produto {
         this.descricao = descricao;
     }
 
-    public double getPreco() {
+    public BigDecimal getPreco() {
         return preco;
     }
 
-    public void setPreco(double preco) {
-        if (preco < 0) {
+    public void setPreco(BigDecimal preco) {
+        if (preco.compareTo(BigDecimal.ZERO) < 0) {
             throw new IllegalArgumentException("Preço não pode ser negativo: " + preco);
         }
         this.preco = preco;

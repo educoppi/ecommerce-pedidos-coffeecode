@@ -1,5 +1,4 @@
 package com.coffeecode.ecommerce.model;
-
 import com.coffeecode.ecommerce.model.pagamento.ProcessadorPagamento;
 import java.math.BigDecimal;
 import java.util.Date;
@@ -9,16 +8,15 @@ public class Boleto extends FormaPagamento implements ProcessadorPagamento {
 
     public Boleto(BigDecimal valor, Date dataDeVencimento, String codigoDeBarras) {
         super(valor, dataDeVencimento);
-        setCodigoDeBarras(codigoDeBarras);
+        this.codigoDeBarras = codigoDeBarras;
     }
-
     
     public boolean isVencido() {
         Date hoje = new Date();
         return hoje.after(getDataDeVencimento());
     }
 
-
+    
     @Override
     public boolean processar(BigDecimal valor) {
         if (isVencido()) {
@@ -38,5 +36,10 @@ public class Boleto extends FormaPagamento implements ProcessadorPagamento {
     @Override
     public String getDescricao() {
         return "Pagamento efetuado via Boleto Bancário";
+    }
+
+    @Override
+    public Date getDataDeVencimento() {
+        return super.getDataDeVencimento();
     }
 }

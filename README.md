@@ -7,9 +7,9 @@
 
 | Nome | Quando foi responsável do dia |
 |---|---|
-| _(Eduardo Bruno Coppi)_ | Aulas: 01 |
-| _(Beatriz Cardoso Rocha)_ | Aulas: 03 |
-| _(João Paulo Oliveira)_ | Aulas: 02 |
+| _(Eduardo Bruno Coppi)_ | Aulas: 01, 04, 07 |
+| _(Beatriz Cardoso Rocha)_ | Aulas: 03, 06, 09 |
+| _(João Paulo Oliveira)_ | Aulas: 02, 05, 08, 10 |
 
 ## Descrição do desafio
 

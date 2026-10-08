@@ -25,11 +25,11 @@ _(Este projeto consiste no desenvolvimento de um sistema completo de gestão de 
 
 ## Funcionalidades previstas
 
-- [ ] Cadastro e gerenciamento de produtos
-- [ ] Cadastro e gerenciamento de clientes
-- [ ] Criação e gerenciamento de pedidos
-- [ ] Processamento de pagamentos (cartão, boleto, Pix)
-- [ ] Testes automatizados (unitários e de integração)
+- [ X ] Cadastro e gerenciamento de produtos
+- [ X ] Cadastro e gerenciamento de clientes
+- [ X ] Criação e gerenciamento de pedidos
+- [ X ] Processamento de pagamentos (cartão, boleto, Pix)
+- [ X ] Testes automatizados (unitários e de integração)
 - [ ] Pipeline de CI/CD
 - [ ] API REST para consumo por um front-end
 

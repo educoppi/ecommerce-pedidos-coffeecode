@@ -10,6 +10,10 @@ public class Pedido {
     private final Cliente cliente;
     private final List<ItemPedido> itens = new ArrayList<>();
     private FormaPagamento formaPagamento;
+    // Observação: Notei que estas variáveis abaixo são usadas no seu método pagar(), 
+    // certifique-se de que elas estejam declaradas assim na sua classe original:
+    private SituacaoDoPedido situacao; 
+    private String comprovante; 
 
     public Pedido(String numero, Cliente cliente) {
         if (numero == null || numero.blank()) {
@@ -38,7 +42,6 @@ public class Pedido {
         }
         if (itens.isEmpty()) {
             throw new IllegalStateException("Pedido sem itens não pode ser pago");
-
         }
         boolean aprovado = processador.processar(calcularValorTotal());
         if (aprovado) {
@@ -70,5 +73,15 @@ public class Pedido {
 
     public FormaPagamento getFormaPagamento() {
         return formaPagamento;
+    }
+
+    // --- MÉTODO MAIN ADICIONADO ABAIXO PARA EXECUTAR O ARQUIVO ---
+    public static void main(String[] args) {
+        System.out.println("Programa iniciado com sucesso!");
+        
+        // Aqui dentro você pode instanciar seus objetos para testar, por exemplo:
+        // Cliente cliente = new Cliente("João");
+        // Pedido pedido = new Pedido("001", cliente);
+        // System.out.println("Pedido criado: " + pedido.getNumero());
     }
 }

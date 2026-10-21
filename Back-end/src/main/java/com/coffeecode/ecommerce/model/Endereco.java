@@ -1,7 +1,5 @@
 package com.coffeecode.ecommerce.model;
 
-import java.math.BigDecimal;
-
 public class Endereco {
     private String cep;
     private String rua;

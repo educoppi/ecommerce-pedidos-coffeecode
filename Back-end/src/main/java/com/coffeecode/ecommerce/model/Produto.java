@@ -15,12 +15,16 @@ public class Produto {
         this.ativo = true;
     }
 
-    public Produto(String codigo, String nome, double preco, int estoque) {
+    public Produto(String codigo, String nome, BigDecimal preco, int estoque) {
         setCodigo(codigo);
         setNome(nome);
         setPreco(preco);
         setQuantidadeEmEstoque(estoque);
         this.ativo = true;
+    }
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
     }
 
     public String getCodigo() {
